@@ -1,0 +1,8 @@
+/target/
+/src/test/resources/ashot/
+test-report.html
+test-report.log
+.classpath
+.project
+.settings
+
