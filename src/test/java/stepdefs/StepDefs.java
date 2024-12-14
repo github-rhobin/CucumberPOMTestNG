@@ -38,16 +38,12 @@ public final class StepDefs {
 	}
 
 	@After(order = 1)
-	public void takeScreenshot(Scenario scenario) {
+	public void takeScreenshotOnTestFailure(Scenario scenario) {
 		if (scenario.isFailed()) {
 			TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
 			byte[] ss = ts.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(ss, "image/png", "Screenshot attached");
-		} else {
-			TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
-			byte[] ss = ts.getScreenshotAs(OutputType.BYTES);
-			scenario.attach(ss, "image/png", "Screenshot attached");
-		}
+		} 
 	}
 
 	@After(order = 0)

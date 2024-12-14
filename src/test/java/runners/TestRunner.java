@@ -12,13 +12,14 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.ConfigUtil;
 
 
-@CucumberOptions(tags = "@login", features = { "./src/test/resources/features" }, glue = { "stepdefs" }, plugin = {
-		"pretty", "html:test-report.html" })
+@CucumberOptions(tags = "@login", 
+features = { "./src/test/resources/features" }, 
+glue = { "stepdefs" }, 
+plugin = {"pretty", "html:test-report-cucumber.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(TestRunner.class);
-	
 	
 	@Override
 	@DataProvider(parallel = true)

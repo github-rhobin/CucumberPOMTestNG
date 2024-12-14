@@ -62,7 +62,7 @@
 			<version>2.24.2</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!--UTILITY LIBRARIES-->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
@@ -74,6 +74,11 @@
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>1.14.0</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.aventstack</groupId>-->
+<!--			<artifactId>extentreports</artifactId>-->
+<!--			<version>5.1.2</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
