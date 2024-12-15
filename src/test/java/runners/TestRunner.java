@@ -15,7 +15,7 @@ import utilities.ConfigUtil;
 @CucumberOptions(tags = "@login", 
 features = { "./src/test/resources/features" }, 
 glue = { "stepdefs" }, 
-plugin = {"pretty", "html:test-report-cucumber.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
+plugin = {"pretty", "html:cucumber-report.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
 	// Logger
@@ -29,12 +29,12 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite
 	public void beginTestSuite() {
-		logger.info("BEGINNING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE));
+		logger.info("BEGINNING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
 	}
 	
 	@AfterSuite
 	public void endTestSuite() {
-		logger.info("ENDING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE));
+		logger.info("ENDING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
 	}
 
 }

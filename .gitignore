@@ -1,8 +1,9 @@
 /target/
 /src/test/resources/ashot/
-test-report-cucumber.html
-test-report-spark.html
-test-report.log
+cucumber-report.html
+extent-pdf-report.html
+extent-spark-report.html
+logs-report.log
 .classpath
 .project
 .settings

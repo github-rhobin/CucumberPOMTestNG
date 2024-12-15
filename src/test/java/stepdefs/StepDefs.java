@@ -48,7 +48,7 @@ public final class StepDefs {
 
 	@After(order = 0)
 	public void tearDown(Scenario scenario) {
-		// Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+		//Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(10));
 		Driver.quitDriver();
 	}
 
