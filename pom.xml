@@ -40,7 +40,7 @@
 			<version>4.27.0</version>
 		</dependency>
 
-		<!--LOGGER LIBRARIES-->
+		<!--UTILITY LIBRARIES-->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -62,8 +62,6 @@
 			<version>2.24.2</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!--UTILITY LIBRARIES-->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
@@ -73,16 +71,6 @@
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>1.14.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>5.3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>5.3.0</version>
 		</dependency>
 	</dependencies>
 
