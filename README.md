@@ -12,4 +12,4 @@ This is a sample web automation framework for https://www.saucedemo.com/v1/
 - Data Driven (Scenario Outline)
 - Page Object Model Design Pattern
 - Cucumber and Extent Reports
-- Selenium Grid 4
+- Selenium Grid
