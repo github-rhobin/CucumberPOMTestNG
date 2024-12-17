@@ -20,19 +20,19 @@ public final class LoginPage extends ElementUtil{
 	// Methods
 	public LoginPage enterUsername(String test_name, String username) {
 		logger.info("{}_____enterUsername_____{}_____{}", test_name, input_username, username);
-		sendKeys(input_username, WaitStrategy.VISIBLE, "[Username]", username );
+		sendKeys(input_username, WaitStrategy.VISIBLE, username );
 		return this;
 	}
 	
 	public LoginPage enterPassword(String test_name, String password) {
 		logger.info("{}_____enterPassword_____{}_____{}", test_name, input_password, password);
-		sendKeys(input_password, WaitStrategy.VISIBLE, "[Password]", password );
+		sendKeys(input_password, WaitStrategy.VISIBLE, password );
 		return this;
 	}
 	
 	public HomePage clickLogin(String test_name) {
 		logger.info("{}_____clickLogin_____{}", test_name, btn_login);
-		click(btn_login, WaitStrategy.CLICKABLE, "[Login]");
+		click(btn_login, WaitStrategy.CLICKABLE);
 		return new HomePage();
 	}
 	
@@ -42,6 +42,6 @@ public final class LoginPage extends ElementUtil{
 	
 	public Boolean isErrorDisplayed(String test_name, String error_message) {
 		logger.info("{}_____isErrorDisplayed_____{}", test_name, setErrorXpath(error_message));
-		return isDisplayed(setErrorXpath(error_message), WaitStrategy.VISIBLE);
+		return checkElementCondition(setErrorXpath(error_message), WaitStrategy.VISIBLE);
 	}
 }

@@ -17,7 +17,7 @@ public final class HomePage extends ElementUtil {
 	// Methods
 	public Boolean isHomePageLoaded(String test_name) {
 		logger.info("{}_____isHomePageLoaded_____{}", test_name, menu_hamburger);
-		return isDisplayed(menu_hamburger, WaitStrategy.VISIBLE);
+		return checkElementCondition(menu_hamburger, WaitStrategy.VISIBLE);
 		
 	}
 }

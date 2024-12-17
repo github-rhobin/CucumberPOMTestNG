@@ -16,27 +16,25 @@ public class ElementUtil {
 	private static final Logger logger = LoggerFactory.getLogger(ElementUtil.class);
 	
 	// Element Actions
-	protected void click(By by, WaitStrategy strategy, String element_name) {
+	protected void click(By by, WaitStrategy strategy) {
 		try {
 			WaitFactory.wait(by, strategy).click();
-			//System.out.println("Click " +element_name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected void sendKeys(By by, WaitStrategy strategy, String element_name, String value) {
+	protected void sendKeys(By by, WaitStrategy strategy, String value) {
 		try {
 			WaitFactory.wait(by, strategy).clear();
 			WaitFactory.wait(by, strategy).sendKeys(value);
-			//System.out.println("Enter " +value+ "on" +element_name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	// Element Status
-	protected Boolean isDisplayed(By by, WaitStrategy strategy) {
+	protected Boolean checkElementCondition(By by, WaitStrategy strategy) {
 		try {
 			WaitFactory.wait(by, strategy);
 			return true;
