@@ -1,7 +1,13 @@
 package stepdefs;
 
+import java.time.Duration;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.util.concurrent.Uninterruptibles;
 
 import driver.Driver;
 import driver.DriverManager;
@@ -11,7 +17,10 @@ import io.cucumber.java.Scenario;
 
 public final class Hooks {
 
-	// Thread Local Scenario Name
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
+	
+	// Thread Local Scenario Outline Name
 	public static ThreadLocal<String> scenario_name = new ThreadLocal<>();
 
 	// Cucumber Hooks
@@ -27,12 +36,13 @@ public final class Hooks {
 			TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
 			byte[] ss = ts.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(ss, "image/png", "Screenshot attached");
-		} 
+		} // copy the same code on else block {} to take screenshot for passed test/scenario
 	}
 
 	@After(order = 0)
 	public void tearDown(Scenario scenario) {
-		//Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(10));
+		logger.info("TEAR DOWN WEBDRIVER [{}]", scenario_name.get());
+		Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
 		Driver.quitDriver();
 	}
 }

@@ -33,8 +33,7 @@ public class ElementUtil {
 		}
 	}
 	
-	// Element Status
-	protected Boolean checkElementCondition(By by, WaitStrategy strategy) {
+	protected boolean checkElementCondition(By by, WaitStrategy strategy) {
 		try {
 			WaitFactory.wait(by, strategy);
 			return true;

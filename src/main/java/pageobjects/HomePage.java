@@ -15,7 +15,7 @@ public final class HomePage extends ElementUtil {
 	private final By menu_hamburger = By.xpath("//div[@class='bm-burger-button']");
 	
 	// Methods
-	public Boolean isHomePageLoaded(String test_name) {
+	public boolean isHomePageLoaded(String test_name) {
 		logger.info("{}_____isHomePageLoaded_____{}", test_name, menu_hamburger);
 		return checkElementCondition(menu_hamburger, WaitStrategy.VISIBLE);
 		

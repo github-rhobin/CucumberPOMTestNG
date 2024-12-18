@@ -30,7 +30,7 @@ public final class ScreenshotUtil {
 		return null;
 	}
 
-	// experimental
+	// experimental conversion method from .png to base64
 	public static String imageToBase64(File file) {
 		String base64 = null;
 		try {
@@ -45,7 +45,7 @@ public final class ScreenshotUtil {
 		return base64;
 	}
 
-	// experimental fullpage screenshot
+	// fullpage screenshot
 	public static File fullScreenshot() throws IOException {
 		Screenshot ss = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
 				.takeScreenshot(DriverManager.getDriver());

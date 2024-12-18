@@ -40,7 +40,7 @@ public final class LoginPage extends ElementUtil{
 		return By.xpath("//h3[text()[contains(.,'" +text+ "')]]");
 	}
 	
-	public Boolean isErrorDisplayed(String test_name, String error_message) {
+	public boolean isErrorDisplayed(String test_name, String error_message) {
 		logger.info("{}_____isErrorDisplayed_____{}", test_name, setErrorXpath(error_message));
 		return checkElementCondition(setErrorXpath(error_message), WaitStrategy.VISIBLE);
 	}

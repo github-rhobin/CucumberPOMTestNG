@@ -29,12 +29,12 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeSuite
 	public void beginTestSuite() {
-		logger.info("BEGINNING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
+		logger.info("BEGIN TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
 	}
 	
 	@AfterSuite
 	public void endTestSuite() {
-		logger.info("ENDING TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
+		logger.info("END TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
 	}
 
 }

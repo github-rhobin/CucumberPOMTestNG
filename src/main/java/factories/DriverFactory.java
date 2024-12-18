@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.Duration;
 
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import com.google.common.util.concurrent.Uninterruptibles;
 
 import enums.ConfigProp;
 import utilities.ConfigUtil;
@@ -31,11 +34,9 @@ public final class DriverFactory {
 			if (browser.equalsIgnoreCase("chrome")) {
 
 				ChromeOptions co = new ChromeOptions();
-				co.addArguments("--incognito");
 				co.addArguments("--disable-extensions");
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
-				//co.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					co.addArguments("--headless=new");
@@ -47,11 +48,9 @@ public final class DriverFactory {
 			} else if (browser.equalsIgnoreCase("edge")) {
 
 				EdgeOptions eo = new EdgeOptions();
-				eo.addArguments("--inprivate");
 				eo.addArguments("--disable-extensions");
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
-				//eo.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					eo.addArguments("--headless=new");
@@ -63,11 +62,9 @@ public final class DriverFactory {
 			} else if (browser.equalsIgnoreCase("firefox")) {
 
 				FirefoxOptions fo = new FirefoxOptions();
-				fo.addArguments("--incognito");
 				fo.addArguments("--disable-extensions");
 				fo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				fo.setAcceptInsecureCerts(true);
-				//fo.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					fo.addArguments("--headless");
@@ -77,19 +74,17 @@ public final class DriverFactory {
 				driver = new FirefoxDriver(fo);
 
 			}
-			
+
 		} else if (ConfigUtil.getPropValue(ConfigProp.RUN_MODE).equalsIgnoreCase("selenium_grid")) {
-			
+
 			URL local_server_url = new URI("http://localhost:4444").toURL();
-			
+
 			if (browser.equalsIgnoreCase("chrome")) {
 
 				ChromeOptions co = new ChromeOptions();
-				co.addArguments("--incognito");
 				co.addArguments("--disable-extensions");
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
-				//co.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					co.addArguments("--headless=new");
@@ -101,11 +96,9 @@ public final class DriverFactory {
 			} else if (browser.equalsIgnoreCase("edge")) {
 
 				EdgeOptions eo = new EdgeOptions();
-				eo.addArguments("--inprivate");
 				eo.addArguments("--disable-extensions");
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
-				//eo.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					eo.addArguments("--headless=new");
@@ -113,15 +106,13 @@ public final class DriverFactory {
 				}
 
 				driver = new RemoteWebDriver(local_server_url, eo);
-				
+
 			} else if (browser.equalsIgnoreCase("firefox")) {
 
 				FirefoxOptions fo = new FirefoxOptions();
-				fo.addArguments("--incognito");
 				fo.addArguments("--disable-extensions");
 				fo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				fo.setAcceptInsecureCerts(true);
-				//fo.setCapability("webSocketUrl", true); // use WebDriver BiDi protocol
 
 				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
 					fo.addArguments("--headless");
@@ -130,9 +121,10 @@ public final class DriverFactory {
 
 				driver = new RemoteWebDriver(local_server_url, fo);
 			}
-			
+
 		}
-		
+
+		Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
 		return driver;
 	}
 }
