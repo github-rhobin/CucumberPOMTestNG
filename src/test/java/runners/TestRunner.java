@@ -15,7 +15,7 @@ import utilities.ConfigUtil;
 @CucumberOptions(tags = "@login", 
 features = { "./src/test/resources/features" }, 
 glue = { "stepdefs" }, 
-plugin = {"pretty", "html:cucumber-report.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
+plugin = {"pretty", "html:cucumber-report.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "timeline:thread-timeline-report/"})
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
 	// Logger
@@ -35,6 +35,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	@AfterSuite
 	public void endTestSuite() {
 		logger.info("END TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
+		//sample commit
 	}
 
 }

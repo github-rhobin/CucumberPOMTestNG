@@ -97,7 +97,7 @@
 					<properties>
 						<property>
 							<name>parallel</name>
-							<value>classes</value>
+							<value>methods</value>
 						</property>
 						<property>
 							<name>dataproviderthreadcount</name>
