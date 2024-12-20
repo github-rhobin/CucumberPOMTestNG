@@ -35,7 +35,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	@AfterSuite
 	public void endTestSuite() {
 		logger.info("END TEST SUITE - RUN MODE [{}]", ConfigUtil.getPropValue(ConfigProp.RUN_MODE).toUpperCase());
-		//sample commit
 	}
 
 }
