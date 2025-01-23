@@ -1,4 +1,4 @@
-package factories;
+package managers;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -21,14 +21,14 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import enums.ConfigProp;
 import utilities.ConfigUtil;
 
-public final class DriverFactory {
+public final class BrowserManager {
 
-	private DriverFactory() {
+	private BrowserManager() {
 	}
 
-	public static WebDriver configDriver(String browser) throws MalformedURLException, URISyntaxException {
+	public static WebDriver configBrowser(String browser) throws MalformedURLException, URISyntaxException {
 
-		WebDriver driver = null;
+		WebDriver webdriver = null;
 
 		if (ConfigUtil.getPropValue(ConfigProp.RUN_MODE).equalsIgnoreCase("local")) {
 			if (browser.equalsIgnoreCase("chrome")) {
@@ -43,7 +43,7 @@ public final class DriverFactory {
 					co.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new ChromeDriver(co);
+				webdriver = new ChromeDriver(co);
 
 			} else if (browser.equalsIgnoreCase("edge")) {
 
@@ -57,7 +57,7 @@ public final class DriverFactory {
 					eo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new EdgeDriver(eo);
+				webdriver = new EdgeDriver(eo);
 
 			} else if (browser.equalsIgnoreCase("firefox")) {
 
@@ -71,7 +71,7 @@ public final class DriverFactory {
 					fo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new FirefoxDriver(fo);
+				webdriver = new FirefoxDriver(fo);
 
 			}
 
@@ -91,7 +91,7 @@ public final class DriverFactory {
 					co.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new RemoteWebDriver(local_server_url, co);
+				webdriver = new RemoteWebDriver(local_server_url, co);
 
 			} else if (browser.equalsIgnoreCase("edge")) {
 
@@ -105,7 +105,7 @@ public final class DriverFactory {
 					eo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new RemoteWebDriver(local_server_url, eo);
+				webdriver = new RemoteWebDriver(local_server_url, eo);
 
 			} else if (browser.equalsIgnoreCase("firefox")) {
 
@@ -119,12 +119,12 @@ public final class DriverFactory {
 					fo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
 				}
 
-				driver = new RemoteWebDriver(local_server_url, fo);
+				webdriver = new RemoteWebDriver(local_server_url, fo);
 			}
 
 		}
 
 		Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
-		return driver;
+		return webdriver;
 	}
 }

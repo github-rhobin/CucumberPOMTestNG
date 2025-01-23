@@ -42,6 +42,6 @@ Feature: User Login
     #id(1) is a deliberate failed scenario to test the screenshot function
     Examples: 
       | id | url                           | browser | username      | password     | error_message        |
-      |  1 | https://www.saucedemo.com/v1/ | firefox | sasa3243124   |              | Username is required |
+      |  1 | https://www.saucedemo.com/v1/ | firefox | fedfds21      |              | Username is required |
       |  2 | https://www.saucedemo.com/v1/ | chrome  |               | secret_sauce | Username is required |
       |  3 | https://www.saucedemo.com/v1/ | edge    | standard_user |              | Password is required |
