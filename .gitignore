@@ -1,5 +1,4 @@
 /target/
-/thread-timeline-report/
 /src/test/resources/ashot/
 cucumber-report.html
 extent-pdf-report.pdf

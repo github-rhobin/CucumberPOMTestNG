@@ -15,7 +15,9 @@ import utilities.ConfigUtil;
 @CucumberOptions(tags = "@login", 
 features = { "./src/test/resources/features" }, 
 glue = { "stepdefs" }, 
-plugin = {"pretty", "html:cucumber-report.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "timeline:thread-timeline-report/"})
+plugin = {"pretty", 
+		"html:cucumber-report.html", 
+		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
 	// Logger

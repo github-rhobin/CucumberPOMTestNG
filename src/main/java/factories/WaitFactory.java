@@ -23,15 +23,15 @@ public final class WaitFactory {
 
 		if (strategy == WaitStrategy.VISIBLE) {
 			element = new WebDriverWait(DriverManager.getDriver(),
-					Duration.ofSeconds(Long.parseLong(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
+					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
 		} else if (strategy == WaitStrategy.PRESENT) {
 			element = new WebDriverWait(DriverManager.getDriver(),
-					Duration.ofSeconds(Long.parseLong(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
+					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.presenceOfElementLocated(by));
 		} else if (strategy == WaitStrategy.CLICKABLE) {
 			element = new WebDriverWait(DriverManager.getDriver(),
-					Duration.ofSeconds(Long.parseLong(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
+					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.elementToBeClickable(by));
 		} else if (strategy == WaitStrategy.NONE) {
 			element = DriverManager.getDriver().findElement(by);

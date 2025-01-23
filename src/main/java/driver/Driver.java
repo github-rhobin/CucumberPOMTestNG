@@ -24,7 +24,7 @@ public final class Driver {
 		DriverManager.getDriver().manage().deleteAllCookies();
 		DriverManager.getDriver().manage().window().maximize();
 		DriverManager.getDriver().manage().timeouts().pageLoadTimeout(
-				Duration.ofSeconds(Long.parseLong(ConfigUtil.getPropValue(ConfigProp.PAGE_LOAD_TIMEOUT_TIMER))));
+				Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.PAGE_LOAD_TIMEOUT_TIMER))));
 	}
 
 	public static void quitDriver() {
