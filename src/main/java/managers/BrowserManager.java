@@ -38,10 +38,9 @@ public final class BrowserManager {
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					co.addArguments("--headless=new");
-					co.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
+				} 
 
 				webdriver = new ChromeDriver(co);
 
@@ -52,10 +51,9 @@ public final class BrowserManager {
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					eo.addArguments("--headless=new");
-					eo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
+				} 
 
 				webdriver = new EdgeDriver(eo);
 
@@ -66,10 +64,9 @@ public final class BrowserManager {
 				fo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				fo.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					fo.addArguments("--headless");
-					fo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
+				} 
 
 				webdriver = new FirefoxDriver(fo);
 
@@ -86,10 +83,9 @@ public final class BrowserManager {
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					co.addArguments("--headless=new");
-					co.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
+				} 
 
 				webdriver = new RemoteWebDriver(local_server_url, co);
 
@@ -100,10 +96,9 @@ public final class BrowserManager {
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					eo.addArguments("--headless=new");
-					eo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
+				} 
 
 				webdriver = new RemoteWebDriver(local_server_url, eo);
 
@@ -114,11 +109,10 @@ public final class BrowserManager {
 				fo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				fo.setAcceptInsecureCerts(true);
 
-				if (ConfigUtil.getPropValue(ConfigProp.HEADLESS).equalsIgnoreCase("yes")) {
+				if (ConfigUtil.getPropValue(ConfigProp.BROWSER_HEADLESS).equalsIgnoreCase("yes")) {
 					fo.addArguments("--headless");
-					fo.addArguments("--window-size=" + ConfigUtil.getPropValue(ConfigProp.HEADLESS_RESOLUTION));
-				}
-
+				} 
+				
 				webdriver = new RemoteWebDriver(local_server_url, fo);
 			}
 

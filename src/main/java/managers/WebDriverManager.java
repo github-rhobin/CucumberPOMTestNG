@@ -3,6 +3,7 @@ package managers;
 import java.time.Duration;
 import java.util.Objects;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 import enums.ConfigProp;
@@ -28,10 +29,12 @@ public final class WebDriverManager {
 			}
 		}
 
-		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().maximize();
+		// Using window().setSize() instead of window().maximize() to fix issue when taking screenshot on headless browser mode
+		getDriver().manage().window().setSize(new Dimension((Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.BROWSER_HEIGHT))), 
+				(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.BROWSER_WIDTH)))));
 		getDriver().manage().timeouts().pageLoadTimeout(
 				Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.PAGE_LOAD_TIMEOUT_TIMER))));
+		getDriver().manage().deleteAllCookies();
 	}
 
 	public static void quitDriver() {
