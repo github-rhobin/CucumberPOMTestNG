@@ -1,4 +1,4 @@
-package managers;
+package factories;
 
 import java.time.Duration;
 
@@ -11,9 +11,9 @@ import enums.ConfigProp;
 import enums.WaitStrategy;
 import utilities.ConfigUtil;
 
-public final class ExplicitWaitManager {
+public final class ExplicitWaitFactory {
 
-	private ExplicitWaitManager() {
+	private ExplicitWaitFactory() {
 	}
 
 	public static WebElement wait(By by, WaitStrategy strategy) {
@@ -21,19 +21,19 @@ public final class ExplicitWaitManager {
 		WebElement element = null;
 
 		if (strategy == WaitStrategy.VISIBLE) {
-			element = new WebDriverWait(WebDriverManager.getDriver(),
+			element = new WebDriverWait(DriverFactory.getDriver(),
 					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
 		} else if (strategy == WaitStrategy.PRESENT) {
-			element = new WebDriverWait(WebDriverManager.getDriver(),
+			element = new WebDriverWait(DriverFactory.getDriver(),
 					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.presenceOfElementLocated(by));
 		} else if (strategy == WaitStrategy.CLICKABLE) {
-			element = new WebDriverWait(WebDriverManager.getDriver(),
+			element = new WebDriverWait(DriverFactory.getDriver(),
 					Duration.ofSeconds(Integer.parseInt(ConfigUtil.getPropValue(ConfigProp.EXPLICIT_WAIT_TIMER))))
 					.until(ExpectedConditions.elementToBeClickable(by));
 		} else if (strategy == WaitStrategy.NONE) {
-			element = WebDriverManager.getDriver().findElement(by);
+			element = DriverFactory.getDriver().findElement(by);
 		}
 
 		return element;

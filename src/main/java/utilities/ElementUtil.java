@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import enums.WaitStrategy;
-import managers.ExplicitWaitManager;
+import factories.ExplicitWaitFactory;
 
 public class ElementUtil {
 	
@@ -18,7 +18,7 @@ public class ElementUtil {
 	// Element Actions
 	protected void click(By by, WaitStrategy strategy) {
 		try {
-			ExplicitWaitManager.wait(by, strategy).click();
+			ExplicitWaitFactory.wait(by, strategy).click();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -26,8 +26,8 @@ public class ElementUtil {
 	
 	protected void sendKeys(By by, WaitStrategy strategy, String value) {
 		try {
-			ExplicitWaitManager.wait(by, strategy).clear();
-			ExplicitWaitManager.wait(by, strategy).sendKeys(value);
+			ExplicitWaitFactory.wait(by, strategy).clear();
+			ExplicitWaitFactory.wait(by, strategy).sendKeys(value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,7 +35,7 @@ public class ElementUtil {
 	
 	protected boolean checkElementCondition(By by, WaitStrategy strategy) {
 		try {
-			ExplicitWaitManager.wait(by, strategy);
+			ExplicitWaitFactory.wait(by, strategy);
 			return true;
 		} catch (Exception e) {
 			return false;

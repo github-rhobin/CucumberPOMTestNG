@@ -1,4 +1,4 @@
-package managers;
+package factories;
 
 import java.time.Duration;
 import java.util.Objects;
@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 import enums.ConfigProp;
 import utilities.ConfigUtil;
 
-public final class WebDriverManager {
+public final class DriverFactory {
 
-	private WebDriverManager() {
+	private DriverFactory() {
 	}
 
 	private static ThreadLocal<WebDriver> webdriver = new ThreadLocal<>();
@@ -23,7 +23,7 @@ public final class WebDriverManager {
 	public static void initDriver(String browser) {
 		if (Objects.isNull(getDriver())) {
 			try {
-				webdriver.set(BrowserManager.configBrowser(browser));
+				webdriver.set(BrowserFactory.configBrowser(browser));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

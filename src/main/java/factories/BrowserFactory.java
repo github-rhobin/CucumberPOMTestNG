@@ -1,4 +1,4 @@
-package managers;
+package factories;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -21,9 +21,9 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import enums.ConfigProp;
 import utilities.ConfigUtil;
 
-public final class BrowserManager {
+public final class BrowserFactory {
 
-	private BrowserManager() {
+	private BrowserFactory() {
 	}
 
 	public static WebDriver configBrowser(String browser) throws MalformedURLException, URISyntaxException {

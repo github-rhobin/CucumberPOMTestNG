@@ -11,7 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
 
-import managers.WebDriverManager;
+import factories.DriverFactory;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -23,7 +23,7 @@ public final class ScreenshotUtil {
 
 	public static String getBase64Image() {
 		try {
-			return ((TakesScreenshot) WebDriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
+			return ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BASE64);
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public final class ScreenshotUtil {
 	// fullpage screenshot
 	public static File fullScreenshot() throws IOException {
 		Screenshot ss = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
-				.takeScreenshot(WebDriverManager.getDriver());
+				.takeScreenshot(DriverFactory.getDriver());
 		String path = "./src/test/resources/ashot/fullscreenshot.png";
 		File file = new File(path);
 		ImageIO.write(ss.getImage(), "png", file);

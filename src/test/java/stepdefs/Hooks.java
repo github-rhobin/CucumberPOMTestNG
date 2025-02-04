@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 
+import factories.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import managers.WebDriverManager;
 
 public final class Hooks {
 
@@ -32,7 +32,7 @@ public final class Hooks {
 	@After(order = 1)
 	public void takeScreenshotOnTestFailure(Scenario scenario) {
 		if (scenario.isFailed()) {
-			TakesScreenshot ts = (TakesScreenshot) WebDriverManager.getDriver();
+			TakesScreenshot ts = (TakesScreenshot) DriverFactory.getDriver();
 			byte[] ss = ts.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(ss, "image/png", "Screenshot attached");
 		} // copy the same code on else block {} to take screenshot for passed test/scenario
@@ -42,6 +42,6 @@ public final class Hooks {
 	public void tearDown(Scenario scenario) {
 		logger.info("TEAR DOWN WEBDRIVER [{}]", scenario_name.get());
 		Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(1));
-		WebDriverManager.quitDriver();
+		DriverFactory.quitDriver();
 	}
 }

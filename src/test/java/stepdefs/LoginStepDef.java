@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import factories.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import managers.WebDriverManager;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
 
@@ -28,8 +28,8 @@ public final class LoginStepDef {
 	public void i_launch_url_on_browser(String url, String browser) {
 		test_name = Hooks.scenario_name.get();
 		logger.info("INITIALIZE WEBDRIVER [{}]", test_name);
-		WebDriverManager.initDriver(browser);
-		WebDriverManager.getDriver().get(url);
+		DriverFactory.initDriver(browser);
+		DriverFactory.getDriver().get(url);
 	}
 
 	@When("user login using username {string} and password {string}")
