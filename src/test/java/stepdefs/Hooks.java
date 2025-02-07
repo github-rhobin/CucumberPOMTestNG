@@ -28,7 +28,7 @@ public final class Hooks {
 	public void setScenarioName(Scenario scenario) {
 		scenario_name.set(scenario.getName());
 	}
-
+	
 	@After(order = 1)
 	public void takeScreenshotOnTestFailure(Scenario scenario) {
 		if (scenario.isFailed()) {

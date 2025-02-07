@@ -1,10 +1,12 @@
 /target/
 /test-output/
+/user-data-dir/
 /src/test/resources/ashot/
 cucumber-report.html
 extent-pdf-report.pdf
 extent-report.html
 extent-spark-report.html
+failed_tests_rerun.txt
 logs-report.log
 .classpath
 .project

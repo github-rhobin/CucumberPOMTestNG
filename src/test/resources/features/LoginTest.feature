@@ -8,7 +8,7 @@ Feature: User Login
     Then user should land on Home page
 
     Examples: 
-      | id | url                           | browser | username      | password     |
+      | id | url                           | browser | username       | password     |
       |  1 | https://www.saucedemo.com/v1/ | chrome  | standard_user | secret_sauce |
 
   @core @extended @aut_tester2
@@ -29,9 +29,9 @@ Feature: User Login
 
     Examples: 
       | id | url                           | browser | username      | password     | error_message                                               |
-      |  1 | https://www.saucedemo.com/v1/ | firefox | bcn34na       | secret_sauce | Username and password do not match any user in this service |
-      |  2 | https://www.saucedemo.com/v1/ | chrome  | standard_user | gfhd34535    | Username and password do not match any user in this service |
-      |  3 | https://www.saucedemo.com/v1/ | edge    | jkol463       | ewr3ddf2     | Username and password do not match any user in this service |
+      |  1 | https://www.saucedemo.com/v1/ | chrome  | bcn34na       | secret_sauce | Username and password do not match any user in this service |
+      |  2 | https://www.saucedemo.com/v1/ | edge    | standard_user | gfhd34535    | Username and password do not match any user in this service |
+      |  3 | https://www.saucedemo.com/v1/ | firefox | jkol463       | ewr3ddf2     | Username and password do not match any user in this service |
 
   @extended @negative @aut_tester4
   Scenario Outline: <id> Unsuccessful Login - Empty Credentials
@@ -42,6 +42,6 @@ Feature: User Login
     #id(1) is a deliberate failed scenario to test the screenshot function
     Examples: 
       | id | url                           | browser | username      | password     | error_message        |
-      |  1 | https://www.saucedemo.com/v1/ | firefox | sasa3243124   |              | Username is required |
-      |  2 | https://www.saucedemo.com/v1/ | chrome  |               | secret_sauce | Username is required |
-      |  3 | https://www.saucedemo.com/v1/ | edge    | standard_user |              | Password is required |
+      |  1 | https://www.saucedemo.com/v1/ | chrome  | abc123        |              | Username is required |
+      |  2 | https://www.saucedemo.com/v1/ | edge    |               | secret_sauce | Username is required |
+      |  3 | https://www.saucedemo.com/v1/ | firefox | standard_user |              | Password is required |

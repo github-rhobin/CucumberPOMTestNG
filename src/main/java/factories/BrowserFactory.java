@@ -33,8 +33,16 @@ public final class BrowserFactory {
 		if (ConfigUtil.getPropValue(ConfigProp.RUN_MODE).equalsIgnoreCase("local")) {
 			if (browser.equalsIgnoreCase("chrome")) {
 
+				// Assign current thread identifier
+				long thread_id = Thread.currentThread().threadId();
+				
+		        // Store profile path
+		        String profile_path = System.getProperty("user.dir") + "/user-data-dir/chrome_profile_" + thread_id;
+				
 				ChromeOptions co = new ChromeOptions();
+				co.addArguments("--user-data-dir=" + profile_path);
 				co.addArguments("--disable-extensions");
+				co.addArguments("--incognito");
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
 
@@ -48,6 +56,7 @@ public final class BrowserFactory {
 
 				EdgeOptions eo = new EdgeOptions();
 				eo.addArguments("--disable-extensions");
+				eo.addArguments("--inprivate");
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
 
@@ -78,8 +87,16 @@ public final class BrowserFactory {
 
 			if (browser.equalsIgnoreCase("chrome")) {
 
+				// Assign current thread identifier
+				long thread_id = Thread.currentThread().threadId();
+				
+		        // Store profile path
+		        String profile_path = System.getProperty("user.dir") + "/user-data-dir/chrome_profile_" + thread_id;
+		        
 				ChromeOptions co = new ChromeOptions();
+				co.addArguments("--user-data-dir=" + profile_path);
 				co.addArguments("--disable-extensions");
+				co.addArguments("--incognito");
 				co.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				co.setAcceptInsecureCerts(true);
 
@@ -93,6 +110,7 @@ public final class BrowserFactory {
 
 				EdgeOptions eo = new EdgeOptions();
 				eo.addArguments("--disable-extensions");
+				eo.addArguments("--inprivate");
 				eo.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 				eo.setAcceptInsecureCerts(true);
 
